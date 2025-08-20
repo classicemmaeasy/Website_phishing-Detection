@@ -20,8 +20,8 @@ if st.button("Check URL"):
         st.warning("Please enter a URL.")
     else:
         # Clean the URL
-        cleaned_url = re.sub(r'^https?://(www\.)?', '', url.strip())
-
+        # cleaned_url = re.sub(r'^https?://(www\.)?', '', url.strip())
+          cleaned_url = re.sub(r'^https://(www\.)?', '', url.strip(), flags=re.IGNORECASE)
         # Transform & predict
         vect_data = vector.transform([cleaned_url])
         prediction = model.predict(vect_data)[0]
